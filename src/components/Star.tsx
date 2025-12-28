@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { Star as StarType } from '../types';
+import starSrc from '../star.png';
 
 interface StarProps {
   star: StarType;
@@ -12,14 +13,12 @@ interface StarProps {
   texturePath?: string;
 }
 
-
-
 export default function Star({
   star,
   onClick,
   isActive = true,
   opacity = 1,
-  texturePath = '/star.png',
+  texturePath = starSrc,
   isClickable = false,
 }: StarProps) {
   const spriteRef = useRef<THREE.Sprite>(null);
