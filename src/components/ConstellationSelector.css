@@ -1,0 +1,108 @@
+.constellation-selector {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+.constellation-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 0 2rem;
+}
+
+.constellation-number {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.constellation-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .constellation-selector {
+    padding: 1rem;
+  }
+
+  .constellation-name {
+    font-size: 1.25rem;
+  }
+
+  .nav-button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .constellation-selector {
+    padding: 0.75rem 1rem;
+  }
+
+  .constellation-info {
+    padding: 0 1rem;
+  }
+
+  .constellation-name {
+    font-size: 1.1rem;
+  }
+
+  .constellation-number {
+    font-size: 0.75rem;
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+}

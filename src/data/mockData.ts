@@ -1,0 +1,1406 @@
+import { Constellation } from '../types';
+
+export const WORLD_CENTER = [-15, 0, 0];
+const WORLD_RADIUS = 30;
+const CAMERA_OFFSET = 18
+
+const points = Array.from({length: 12}, (item, index) => {
+  const angle = (30 * index) * Math.PI / 180;
+
+  const constellationCenter = [
+    WORLD_CENTER[0] + Math.sin(angle) * WORLD_RADIUS,
+    WORLD_CENTER[1],
+    WORLD_CENTER[2] - Math.cos(angle) * WORLD_RADIUS,
+  ]
+
+  const cameraCenter = [
+    WORLD_CENTER[0] + Math.sin(angle) * (WORLD_RADIUS - CAMERA_OFFSET),
+    WORLD_CENTER[1],
+    WORLD_CENTER[2] - Math.cos(angle) * (WORLD_RADIUS - CAMERA_OFFSET),
+  ]
+  return {
+    constellationCenter,
+    cameraCenter
+  }
+})
+
+console.log(points)
+
+
+export const constellations: Constellation[] = [
+  {
+    id: 'september',
+    name: 'Сентябрь',
+    cameraPosition: points[0].cameraCenter,
+    cameraLookAt: points[0].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+  {
+    id: 'october',
+    name: 'Октябрь',
+    cameraPosition: points[1].cameraCenter,
+    cameraLookAt: points[1].constellationCenter,
+    stars: [
+    {
+      id: 's10-1',
+      name: '',
+      position: [1.5, 4, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-2',
+      name: '',
+      position: [3, -1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-3',
+      name: '',
+      position: [0, -4, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-4',
+      name: '',
+      position: [0.5, -5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-5',
+      name: '',
+      position: [-3, 5.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-6',
+      name: '',
+      position: [-3.7, 1.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-7',
+      name: '',
+      position: [-4.3, 0.3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's10-8',
+      name: '',
+      position: [-4.8, -1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's10-1', star2Id: 's10-2' },
+      { star1Id: 's10-2', star2Id: 's10-3' },
+      { star1Id: 's10-3', star2Id: 's10-4' },
+      { star1Id: 's10-5', star2Id: 's10-1' },
+      { star1Id: 's10-5', star2Id: 's10-2' },
+      { star1Id: 's10-6', star2Id: 's10-5' },
+      { star1Id: 's10-7', star2Id: 's10-6' },
+      { star1Id: 's10-8', star2Id: 's10-7' },
+    ],
+  },
+  {
+    id: 'november',
+    name: 'Ноябрь',
+    cameraPosition: points[2].cameraCenter,
+    cameraLookAt: points[2].constellationCenter,
+    stars: [
+    {
+      id: 's11-1',
+      name: '',
+      position: [-0, 0, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-2',
+      name: '',
+      position: [1.2, -2, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-3',
+      name: '',
+      position: [2.5, -4, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-4',
+      name: '',
+      position: [1.2, -5.3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-5',
+      name: '',
+      position: [-1, -7, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-6',
+      name: '',
+      position: [-3, -6.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-7',
+      name: '',
+      position: [-2.7, -5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-8',
+      name: '',
+      position: [-1, 3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-9',
+      name: '',
+      position: [-0.8, 4.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-10',
+      name: '',
+      position: [-0.2, 8, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-11',
+      name: '',
+      position: [1, 7.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's11-12',
+      name: '',
+      position: [2, 6, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's11-1', star2Id: 's11-2' },
+      { star1Id: 's11-2', star2Id: 's11-3' },
+      { star1Id: 's11-3', star2Id: 's11-4' },
+      { star1Id: 's11-4', star2Id: 's11-5' },
+      { star1Id: 's11-5', star2Id: 's11-6' },
+      { star1Id: 's11-6', star2Id: 's11-7' },
+      { star1Id: 's11-1', star2Id: 's11-8' },
+      { star1Id: 's11-8', star2Id: 's11-9' },
+      { star1Id: 's11-9', star2Id: 's11-10' },
+      { star1Id: 's11-9', star2Id: 's11-11' },
+      { star1Id: 's11-9', star2Id: 's11-12' },
+    ],
+  },
+  {
+    id: 'December',
+    name: 'Декабрь',
+    cameraPosition: points[3].cameraCenter,
+    cameraLookAt: points[3].constellationCenter,
+    stars: [
+    {
+      id: 's12-1',
+      name: '',
+      position: [-1, 2, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-2',
+      name: '',
+      position: [-2.5, 2.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-3',
+      name: '',
+      position: [-4, 2, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-4',
+      name: '',
+      position: [-3.5, 0, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-5',
+      name: '',
+      position: [-4, 5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-6',
+      name: '',
+      position: [-2.5, 5.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-7',
+      name: '',
+      position: [1.7, 2.8, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-8',
+      name: '',
+      position: [4, 6, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-9',
+      name: '',
+      position: [2.6, 0, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-10',
+      name: '',
+      position: [4.5, -1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-11',
+      name: '',
+      position: [2, -3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's12-12',
+      name: '',
+      position: [2.5, -4.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's12-1', star2Id: 's12-2' },
+      { star1Id: 's12-2', star2Id: 's12-3' },
+      { star1Id: 's12-2', star2Id: 's12-5' },
+      { star1Id: 's12-3', star2Id: 's12-4' },
+      { star1Id: 's12-5', star2Id: 's12-6' },
+      { star1Id: 's12-1', star2Id: 's12-7' },
+      { star1Id: 's12-7', star2Id: 's12-8' },
+      { star1Id: 's12-7', star2Id: 's12-9' },
+      { star1Id: 's12-9', star2Id: 's12-10' },
+      { star1Id: 's12-9', star2Id: 's12-11' },
+      { star1Id: 's12-11', star2Id: 's12-12' },
+    ],
+  },
+  {
+    id: 'january',
+    name: 'Январь',
+    cameraPosition: points[4].cameraCenter,
+    cameraLookAt: points[4].constellationCenter,
+    stars: [
+    {
+      id: 's01-1',
+      name: '',
+      position: [0, 2, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-2',
+      name: '',
+      position: [-1.7, 2.2, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-3',
+      name: '',
+      position: [-3.5, 2.4, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-4',
+      name: '',
+      position: [-5, 2.8, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-5',
+      name: '',
+      position: [-2.5, -1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-6',
+      name: '',
+      position: [2, -3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-7',
+      name: '',
+      position: [2.8, -2, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's01-8',
+      name: '',
+      position: [5, 3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+     {
+      id: 's01-9',
+      name: '',
+      position: [5.5, 4.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's01-1', star2Id: 's01-2' },
+      { star1Id: 's01-2', star2Id: 's01-3' },
+      { star1Id: 's01-3', star2Id: 's01-4' },
+      { star1Id: 's01-4', star2Id: 's01-5' },
+      { star1Id: 's01-5', star2Id: 's01-6' },
+      { star1Id: 's01-6', star2Id: 's01-7' },
+      { star1Id: 's01-7', star2Id: 's01-8' },
+      { star1Id: 's01-8', star2Id: 's01-9' },
+      { star1Id: 's01-8', star2Id: 's01-1' },
+    ],
+  },
+  {
+    id: 'february',
+    name: 'Февраль',
+    cameraPosition: points[5].cameraCenter,
+    cameraLookAt: points[5].constellationCenter,
+    stars: [
+    {
+      id: 's02-1',
+      name: '',
+      position: [3.5, 6, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-2',
+      name: '',
+      position: [0, 4.5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+     {
+      id: 's02-3',
+      name: '',
+      position: [-3.5, 3, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-4',
+      name: '',
+      position: [-1, 1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-5',
+      name: '',
+      position: [2, 1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-6',
+      name: '',
+      position: [-4, 1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-7',
+      name: '',
+      position: [-5, 0, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-8',
+      name: '',
+      position: [-5.5, -1, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-9',
+      name: '',
+      position: [-3, -6, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-10',
+      name: '',
+      position: [-1.5, -5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-11',
+      name: '',
+      position: [1.5, -5, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-12',
+      name: '',
+      position: [3, -6, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's02-13',
+      name: '',
+      position: [5, -8, 0],
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's02-1', star2Id: 's02-2' },
+      { star1Id: 's02-2', star2Id: 's02-3' },
+      { star1Id: 's02-3', star2Id: 's02-4' },
+      { star1Id: 's02-3', star2Id: 's02-6' },
+      { star1Id: 's02-4', star2Id: 's02-5' },
+      { star1Id: 's02-6', star2Id: 's02-7' },
+      { star1Id: 's02-7', star2Id: 's02-8' },
+      { star1Id: 's02-8', star2Id: 's02-9' },
+      { star1Id: 's02-9', star2Id: 's02-10' },
+      { star1Id: 's02-10', star2Id: 's02-11' },
+      { star1Id: 's02-11', star2Id: 's02-12' },
+      { star1Id: 's02-12', star2Id: 's02-13' },
+    ],
+  },
+  {
+    id: 'march',
+    name: 'Март',
+    cameraPosition: points[6].cameraCenter,
+    cameraLookAt: points[6].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+  {
+    id: 'april',
+    name: 'Апрель',
+    cameraPosition: points[7].cameraCenter,
+    cameraLookAt: points[7].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+  {
+    id: 'may',
+    name: 'Май',
+    cameraPosition: points[8].cameraCenter,
+    cameraLookAt: points[8].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+  {
+    id: 'jube',
+    name: 'Июнь',
+    cameraPosition: points[9].cameraCenter,
+    cameraLookAt: points[9].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+  {
+    id: 'jule',
+    name: 'Июль',
+    cameraPosition: points[10].cameraCenter,
+    cameraLookAt: points[10].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+  {
+    id: 'august',
+    name: 'Август',
+    cameraPosition: points[11].cameraCenter,
+    cameraLookAt: points[11].constellationCenter,
+    stars: [
+    {
+      id: 's09-1',
+      name: '',
+      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-2',
+      name: 'А ты всегда такой чёрный? Или загорел?',
+      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
+      images: [],
+    },
+    {
+      id: 's09-3',
+      name: 'В этот день началась история',
+      position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
+      date: '20.01.2023',
+      description: 'Легендарная хуйня',
+      images: [
+        './images/050825/1.png',
+      ],
+    },
+    {
+      id: 's09-4',
+      name: '',
+      position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-5',
+      name: '',
+      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-6',
+      name: '',
+      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-7',
+      name: '',
+      position: [-5.5, 0.7, 0], // Было: [-20.5, 0.7, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-8',
+      name: '',
+      position: [-2.5, -1.5, 0], // Было: [-17.5, -1.5, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-9',
+      name: '',
+      position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-10',
+      name: '',
+      position: [-5, -1, 0], // Было: [-20, -1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-11',
+      name: '',
+      position: [3, 2.1, 0], // Было: [-12, 2.1, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    {
+      id: 's09-12',
+      name: '',
+      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
+      date: '',
+      description: '',
+      images: [],
+    },
+    ],
+    connections: [
+      { star1Id: 's09-1', star2Id: 's09-2' },
+      { star1Id: 's09-2', star2Id: 's09-3' },
+      { star1Id: 's09-3', star2Id: 's09-4' },
+      { star1Id: 's09-1', star2Id: 's09-4' },
+      { star1Id: 's09-4', star2Id: 's09-5' },
+      { star1Id: 's09-6', star2Id: 's09-7' },
+      { star1Id: 's09-1', star2Id: 's09-6' },
+      { star1Id: 's09-2', star2Id: 's09-8' },
+      { star1Id: 's09-8', star2Id: 's09-9' },
+      { star1Id: 's09-9', star2Id: 's09-10' },
+      { star1Id: 's09-3', star2Id: 's09-11' },
+      { star1Id: 's09-11', star2Id: 's09-12' },
+    ],
+  },
+];
+
+// 0 0 12
