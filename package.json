@@ -1,7 +1,6 @@
 {
   "homepage": "https://dusteex.github.io/ourStars/",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
+
   "name": "constellation-memories",
   "version": "1.0.0",
   "private": true,
@@ -10,7 +9,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",
