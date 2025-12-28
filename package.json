@@ -1,4 +1,7 @@
 {
+  "homepage": "https://dusteex.github.io/ourStars/",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
   "name": "constellation-memories",
   "version": "1.0.0",
   "private": true,
