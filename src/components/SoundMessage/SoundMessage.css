@@ -1,0 +1,158 @@
+/* VoiceMessagePlayer.css */
+.voice-message-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  background: #f0f2f5;
+  border-radius: 16px;
+  max-width: 300px;
+  min-width: 200px;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* Кнопка воспроизведения */
+.voice-play-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.voice-play-button:active {
+  transform: scale(0.95);
+  background: #f5f5f5;
+}
+
+/* Контейнер волны */
+.voice-wave-container {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Сама волна */
+.voice-waveform {
+  width: 100%;
+  height: 20px;
+}
+
+/* Время */
+.voice-time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.voice-current-time {
+  color: #3390ec;
+  font-weight: 500;
+}
+
+/* Индикатор перемотки */
+.voice-seek-indicator {
+
+}
+
+/* Регулировка громкости */
+.voice-volume-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.voice-volume-control:hover {
+  opacity: 1;
+}
+
+.voice-volume-slider {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+}
+
+.voice-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #3390ec;
+  cursor: pointer;
+}
+
+.voice-volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #3390ec;
+  cursor: pointer;
+  border: none;
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 480px) {
+  .voice-message-container {
+    gap: 10px;
+    max-width: 280px;
+  }
+
+  .voice-play-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .voice-volume-slider {
+    width: 50px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 320px) {
+  .voice-message-container {
+    gap: 8px;
+  }
+
+  .voice-play-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .voice-play-button svg {
+    size: 16px;
+  }
+}
+
+/* Анимация при воспроизведении */
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.voice-message-container.playing .voice-seek-indicator {
+  animation: pulse 1.5s infinite;
+}

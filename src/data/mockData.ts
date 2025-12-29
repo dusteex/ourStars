@@ -24,7 +24,20 @@ const points = Array.from({length: 12}, (item, index) => {
   }
 })
 
-console.log(points)
+const allStarImages = import.meta.glob(
+  '/src/data/images/**/*.{png,jpg,jpeg,svg,webp}',
+  { eager: true, import: 'default' }
+);
+
+const getStarImages = (id: string) => {
+  return Object.entries(allStarImages)
+    .filter(([path]) => path.includes(`/images/${id}/`))
+    .map(([, url]) => url);
+};
+
+function starImages() {
+  return getStarImages(this.id)
+}
 
 
 export const constellations: Constellation[] = [
@@ -44,7 +57,7 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's09-2',
-      name: 'А ты всегда такой чёрный? Или загорел?',
+      name: 'А ты всегдаа такой чёрный? Или загорел?',
       position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
       date: '03.08.2025',
       description: 'Что, что, а это я точно не ожидал услышать )))',
@@ -56,9 +69,7 @@ export const constellations: Constellation[] = [
       position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
       date: '20.01.2023',
       description: 'Легендарная хуйня',
-      images: [
-        './images/050825/1.png',
-      ],
+      images: [],
     },
     {
       id: 's09-4',
@@ -1235,11 +1246,11 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's08-5',
-      name: '',
+      name: 'Вы спросите, с чего всё началось?',
       position: [2, 3.5, 0],
-      date: '',
+      date: '05.08.2025',
       description: '',
-      images: [],
+      images: getStarImages('050825'),
     },
     {
       id: 's08-6',
