@@ -7,6 +7,10 @@ import { Star, Constellation } from './types';
 import { constellations } from './data/mockData';
 import './App.css';
 import AuthGate from './components/AuthGate/AuthGate';
+import { AnimatePresence } from 'framer-motion';
+import MonthSelector from './components/StarList/MonthSelector';
+import StarList from './components/StarList/StarList';
+import { getStarWorldPosition } from './utils/getStarWorldPosition';
 
 
 function App() {
@@ -30,7 +34,8 @@ function App() {
     setTimeout(() => {
       setIsTransitioning(false);
       setPreviousConstellation(null);
-    }, 1500);
+      console.log(constellation.stars.map(star => star.name).filter(item => !!item))
+    }, 1300);
   };
 
   const handleStarClick = (star: Star) => {
@@ -49,11 +54,23 @@ function App() {
     // Камера вернется автоматически через ConstellationScene
   };
 
+  const handleStarListItemClick = (star: Star) => {
+    const normalizedStar = {
+      ...star,
+      position: getStarWorldPosition(
+        star.position,
+        selectedConstellation.cameraLookAt,
+      )
+    }
+
+    handleStarClick(normalizedStar)
+  }
+
   return (
     <div className="app">
       <AuthGate>
         <Canvas
-          camera={{ position: selectedConstellation.cameraPosition, fov: 75 }}
+          camera={{ position: selectedConstellation.cameraPosition, fov: 70 }}
           gl={{ antialias: true }}
         >
           <ConstellationScene
@@ -76,9 +93,17 @@ function App() {
           onSelect={handleConstellationChange}
         />
 
-        {selectedStar && (
-          <StarModal star={selectedStar} onClose={handleCloseModal} />
-        )}
+        <StarList
+          onStarClick={handleStarListItemClick}
+          selectedStarId="null"
+          stars={selectedConstellation.stars.filter(star => !!star.name)}
+        />
+
+        <AnimatePresence>
+          {selectedStar && (
+            <StarModal star={selectedStar} onClose={handleCloseModal} />
+          )}
+        </AnimatePresence>
       </AuthGate>
     </div>
   );

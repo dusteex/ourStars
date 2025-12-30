@@ -1,14 +1,87 @@
 /* components/AuthGate/AuthGate.css */
 
+/* ============================================
+   CSS переменные для цветов и стилей
+   ============================================ */
+
+.auth-container {
+  /* Основные цвета */
+  --color-bg-overlay: rgba(30, 20, 10, 0.88);
+  --color-overlay-blur: blur(12px);
+
+  /* Цвета карты */
+  --color-auth-bg: rgba(28, 20, 15, 0.95);
+  --color-auth-border: rgba(251, 191, 36, 0.15);
+  --color-auth-shadow: rgba(180, 83, 9, 0.3);
+
+  /* Текст */
+  --color-text-primary: #fef3c7;
+  --color-text-secondary: #fbbf24;
+  --color-text-description: #fde68a;
+  --color-text-gradient-start: #fef3c7;
+  --color-text-gradient-end: #fbbf24;
+  --color-text-label: #fde68a;
+
+  /* Инпуты */
+  --color-input-bg: rgba(120, 53, 15, 0.3);
+  --color-input-border: rgba(251, 191, 36, 0.2);
+  --color-input-border-focus: rgba(251, 191, 36, 0.4);
+  --color-input-shadow-focus: rgba(251, 191, 36, 0.15);
+  --color-input-placeholder: rgba(253, 230, 138, 0.5);
+
+  /* Кнопки */
+  --color-button-bg: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --color-button-border: rgba(253, 230, 138, 0.25);
+  --color-button-shadow: rgba(245, 158, 11, 0.25);
+  --color-button-shadow-hover: rgba(245, 158, 11, 0.35);
+  --color-button-bg-hover: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --color-button-disabled: rgba(120, 53, 15, 0.5);
+
+  /* Подсказки и ошибки */
+  --color-hint-bg: rgba(180, 83, 9, 0.15);
+  --color-hint-border: rgba(251, 191, 36, 0.2);
+  --color-error-bg: rgba(180, 53, 9, 0.15);
+  --color-error-border: rgba(251, 89, 36, 0.2);
+  --color-error-text: #fbbf24;
+
+  /* Фон градиент */
+  --color-bg-gradient-start: #1c140f;
+  --color-bg-gradient-end: #2c1c14;
+
+  /* Кнопка сброса */
+  --color-reset-bg: rgba(251, 191, 36, 0.2);
+  --color-reset-border: rgba(253, 230, 138, 0.25);
+  --color-reset-bg-hover: rgba(253, 230, 138, 0.3);
+
+  /* Адаптивные размеры */
+  --auth-padding-desktop: 40px;
+  --auth-padding-tablet: 30px 25px;
+  --auth-padding-mobile: 25px 20px;
+  --auth-radius: 24px;
+  --auth-radius-mobile: 20px;
+  --input-padding: 16px 20px;
+  --input-padding-mobile: 12px 16px;
+  --button-padding: 18px;
+  --button-padding-mobile: 16px;
+}
+
+/* ============================================
+   Основные стили с использованием переменных
+   ============================================ */
+
 .auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  position: relative;
+  background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   overflow: hidden;
+  z-index: 10000;
 }
 
 .auth-container::before {
@@ -18,49 +91,54 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23fbbf24' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
   opacity: 0.3;
 }
 
 .auth-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 24px;
-  padding: 40px;
+  background: var(--color-auth-bg);
+  border-radius: var(--auth-radius);
+  padding: var(--auth-padding-desktop);
   width: 100%;
   max-width: 480px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px var(--color-auth-shadow);
+  backdrop-filter: var(--color-overlay-blur);
+  border: 1px solid var(--color-auth-border);
   z-index: 1;
 }
 
+/* Хедер */
 .auth-header {
   text-align: center;
   margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-auth-border);
 }
 
 .auth-header h2 {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--color-text-gradient-start) 0%, var(--color-text-gradient-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .auth-subtitle {
-  color: #666;
+  color: var(--color-text-secondary);
   font-size: 16px;
   font-weight: 500;
 }
 
+/* Форма */
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 6px;
 }
 
+/* Вопросы */
 .auth-question {
   display: flex;
   flex-direction: column;
@@ -70,30 +148,33 @@
 .question-label {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--color-text-label);
 }
 
 .answer-input {
-  padding: 16px 20px;
-  border: 2px solid #e0e0e0;
+  padding: var(--input-padding);
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
   border-radius: 12px;
   font-size: 16px;
   transition: all 0.3s ease;
   outline: none;
+  color: var(--color-text-primary);
 }
 
 .answer-input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--color-input-border-focus);
+  box-shadow: 0 0 0 3px var(--color-input-shadow-focus);
 }
 
 .answer-input::placeholder {
-  color: #999;
+  color: var(--color-input-placeholder);
 }
 
+/* Ошибка */
 .auth-error {
-  background: #fee;
-  color: #c33;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -101,9 +182,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #fcc;
+  border: 1px solid var(--color-error-border);
 }
 
+/* Подсказки */
 .auth-hint-section {
   display: flex;
   flex-direction: column;
@@ -113,7 +195,7 @@
 .hint-btn {
   background: transparent;
   border: none;
-  color: #667eea;
+  color: var(--color-text-secondary);
   font-size: 14px;
   cursor: pointer;
   padding: 8px;
@@ -124,54 +206,60 @@
 }
 
 .hint-btn:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: var(--color-hint-bg);
 }
 
 .auth-hint {
-  background: #f8f9ff;
-  color: #555;
+  background: var(--color-hint-bg);
+  color: var(--color-text-description);
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--color-text-secondary);
 }
 
+/* Кнопка отправки */
 .auth-submit-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 18px;
+  background: var(--color-button-bg);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-button-border);
+  padding: var(--button-padding);
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 8px;
+  box-shadow: 0 4px 20px var(--color-button-shadow);
 }
 
 .auth-submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 25px var(--color-button-shadow-hover);
+  background: var(--color-button-bg-hover);
 }
 
 .auth-submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: var(--color-button-disabled);
 }
 
+/* Футер */
 .auth-footer {
   margin-top: 32px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--color-auth-border);
   text-align: center;
 }
 
 .auth-note {
-  color: #888;
+  color: var(--color-text-secondary);
   font-size: 12px;
   font-weight: 500;
 }
 
+/* Кнопка сброса */
 .auth-reset-btn {
   position: fixed;
   bottom: 20px;
@@ -179,9 +267,9 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(102, 126, 234, 0.9);
-  border: none;
-  color: white;
+  background: var(--color-reset-bg);
+  border: 1px solid var(--color-reset-border);
+  color: var(--color-text-primary);
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
@@ -189,27 +277,29 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px var(--color-auth-shadow);
+  backdrop-filter: var(--color-overlay-blur);
 }
 
 .auth-reset-btn:hover {
-  background: #764ba2;
+  background: var(--color-reset-bg-hover);
   transform: scale(1.1);
 }
 
+/* Загрузка */
 .auth-loading {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
 }
 
 .spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
+  border: 4px solid rgba(251, 191, 36, 0.3);
+  border-top-color: var(--color-text-secondary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -218,14 +308,18 @@
   to { transform: rotate(360deg); }
 }
 
-/* Адаптивность */
+/* ============================================
+   Адаптивность
+   ============================================ */
+
 @media (max-width: 768px) {
   .auth-container {
     padding: 15px;
   }
 
   .auth-card {
-    padding: 30px 25px;
+    padding: var(--auth-padding-tablet);
+    border-radius: var(--auth-radius-mobile);
   }
 
   .auth-header h2 {
@@ -237,19 +331,25 @@
   }
 
   .answer-input {
-    padding: 14px 18px;
+    padding: var(--input-padding-mobile);
     font-size: 15px;
   }
 
   .auth-submit-btn {
-    padding: 16px;
+    padding: var(--button-padding-mobile);
     font-size: 16px;
+  }
+
+  .auth-reset-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
   .auth-card {
-    padding: 25px 20px;
+    padding: var(--auth-padding-mobile);
   }
 
   .auth-header h2 {
@@ -265,7 +365,7 @@
   }
 
   .answer-input {
-    padding: 12px 16px;
+    padding: var(--input-padding-mobile);
   }
 
   .auth-reset-btn {
@@ -275,4 +375,107 @@
     bottom: 15px;
     right: 15px;
   }
+}
+
+/* ============================================
+   Светлая тема (опционально)
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-auth-bg: rgba(255, 255, 255, 0.95);
+    --color-auth-border: rgba(0, 0, 0, 0.1);
+    --color-auth-shadow: rgba(0, 0, 0, 0.1);
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-text-description: #475569;
+    --color-text-gradient-start: #0f172a;
+    --color-text-gradient-end: #475569;
+    --color-text-label: #334155;
+    --color-input-bg: rgba(241, 245, 249, 0.7);
+    --color-input-border: rgba(0, 0, 0, 0.1);
+    --color-input-border-focus: rgba(59, 130, 246, 0.4);
+    --color-input-shadow-focus: rgba(59, 130, 246, 0.1);
+    --color-input-placeholder: rgba(100, 116, 139, 0.5);
+    --color-button-bg: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    --color-button-border: rgba(59, 130, 246, 0.25);
+    --color-button-shadow: rgba(59, 130, 246, 0.25);
+    --color-button-shadow-hover: rgba(59, 130, 246, 0.35);
+    --color-button-bg-hover: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    --color-button-disabled: rgba(100, 116, 139, 0.3);
+    --color-hint-bg: rgba(241, 245, 249, 0.7);
+    --color-hint-border: rgba(59, 130, 246, 0.2);
+    --color-error-bg: rgba(254, 226, 226, 0.7);
+    --color-error-border: rgba(239, 68, 68, 0.2);
+    --color-error-text: #dc2626;
+    --color-bg-gradient-start: #f8fafc;
+    --color-bg-gradient-end: #e2e8f0;
+    --color-reset-bg: rgba(59, 130, 246, 0.1);
+    --color-reset-border: rgba(59, 130, 246, 0.2);
+    --color-reset-bg-hover: rgba(59, 130, 246, 0.2);
+  }
+}
+
+/* ============================================
+   Темная тема (базовая)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Уже заданы темные цвета по умолчанию */
+  }
+}
+
+
+/* ============================================
+   Анимации для AuthGate
+   ============================================ */
+
+/* Плавный уход формы */
+@keyframes slideDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.auth-card-slide-down {
+  animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Анимация успеха */
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.success-pulse {
+  animation: successPulse 1.5s ease-in-out;
+}
+
+/* Анимация появления контента */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-fade-in {
+  animation: fadeInUp 0.5s ease-out;
 }

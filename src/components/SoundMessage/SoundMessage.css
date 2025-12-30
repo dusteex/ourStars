@@ -4,7 +4,8 @@
   align-items: center;
   gap: 12px;
   padding: 0 12px;
-  background: #f0f2f5;
+  background: var(--color-description-bg);
+  border: 1px solid var(--color-description-border);
   border-radius: 16px;
   max-width: 300px;
   min-width: 200px;
@@ -17,8 +18,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: none;
+  color: var(--color-text-description);
+  border: 1px solid var(--color-text-description);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +32,7 @@
 
 .voice-play-button:active {
   transform: scale(0.95);
-  background: #f5f5f5;
+  background: var(--color-text-description);
 }
 
 /* Контейнер волны */
@@ -61,7 +63,7 @@
 }
 
 .voice-current-time {
-  color: #3390ec;
+  color: var(--color-text-description);
   font-weight: 500;
 }
 
@@ -100,7 +102,7 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #3390ec;
+  background: #fef3c7;
   cursor: pointer;
 }
 
@@ -108,7 +110,7 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #3390ec;
+  background: #fef3c7;
   cursor: pointer;
   border: none;
 }

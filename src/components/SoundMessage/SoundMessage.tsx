@@ -19,8 +19,8 @@ export default function VoiceMessagePlayer({ audioUrl, duration }) {
 
     wavesurfer.current = WaveSurfer.create({
       container: waveformRef.current,
-      waveColor: '#a0a0a0',
-      progressColor: '#3390ec', // Синий цвет как в Telegram
+      waveColor: 'rgba(78, 56, 37, 1)',
+      progressColor: '#fde68a', // Синий цвет как в Telegram
       cursorColor: 'transparent',
       barWidth: 3,
       barRadius: 10,
@@ -93,9 +93,9 @@ export default function VoiceMessagePlayer({ audioUrl, duration }) {
         aria-label={isPlaying ? "Пауза" : "Воспроизвести"}
       >
         {isPlaying ? (
-          <Pause size={20} color="#3390ec" />
+          <Pause size={20} color="currentColor" />
         ) : (
-          <Play size={20} color="#3390ec" />
+          <Play size={20} color="currentColor" />
         )}
       </button>
 

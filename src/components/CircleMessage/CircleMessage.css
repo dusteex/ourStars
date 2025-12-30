@@ -94,17 +94,34 @@
   pointer-events: all;
 }
 
+.control-button {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  pointer-events: all;
+}
+
+.control-button:hover {
+  background: #e9a91f63;
+}
+
 /* Кнопка воспроизведения */
 .play-button {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 40px;
+  height: 40px;
+  background-color: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,9 +132,7 @@
 }
 
 .play-button:hover {
-  background: rgba(51, 144, 236, 0.8);
-  border-color: white;
-  transform: translate(-50%, -50%) scale(1.1);
+  background: #e9a91f63;
 }
 
 /* Нижние контролы */
@@ -145,24 +160,6 @@
   gap: 10px;
 }
 
-.control-button {
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(4px);
-  pointer-events: all;
-}
-
-.control-button:hover {
-  background: rgba(51, 144, 236, 0.8);
-}
 
 /* Область для перемотки */
 .seek-area {

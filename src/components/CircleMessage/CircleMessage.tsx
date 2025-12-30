@@ -295,7 +295,7 @@ export default function CircleVideoPlayer({
       <video
         ref={videoRef}
         className="circle-video"
-        src={videoUrl}
+        src={videoUrl + "#t=0.001"}
         muted={isMuted}
         loop={loop}
         playsInline

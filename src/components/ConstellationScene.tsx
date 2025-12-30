@@ -224,7 +224,7 @@ export default function ConstellationScene({
       }
     } else if (isTransitioning && intermediatePosition.current && intermediateLookAt.current) {
       const elapsed = (Date.now() - transitionStartTime.current) / 1000;
-      const totalDuration = 1.5;
+      const totalDuration = 1.3;
       const progress = Math.min(elapsed / totalDuration, 1);
 
       const easeInOut = (t: number) => {

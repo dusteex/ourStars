@@ -1,8 +1,10 @@
 import { Constellation } from '../types';
 
-export const WORLD_CENTER = [-15, 0, 0];
+export const WORLD_CENTER = [-15, 1, 0];
 const WORLD_RADIUS = 30;
 const CAMERA_OFFSET = 18
+
+export const ANSWER = "сырный суп"
 
 const points = Array.from({length: 12}, (item, index) => {
   const angle = (30 * index) * Math.PI / 180;
@@ -75,8 +77,8 @@ export const constellations: Constellation[] = [
       id: 's09-4',
       name: '',
       position: [0.7, 2.5, 0], // Было: [-14.3, 2.5, 0] → Сдвиг: +15 по X
-      date: '',
-      description: '',
+      date: '03.08.2025',
+      description: 'Что, что, а это я точно не ожидал услышать )))',
       images: [],
     },
     {
@@ -250,7 +252,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-1',
       name: '',
-      position: [-0, 0, 0],
+      position: [-0, 2, 0], // было [0, 0, 0]
       date: '',
       description: '',
       images: [],
@@ -258,7 +260,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-2',
       name: '',
-      position: [1.2, -2, 0],
+      position: [1.2, 0, 0], // было [1.2, -2, 0]
       date: '',
       description: '',
       images: [],
@@ -266,7 +268,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-3',
       name: '',
-      position: [2.5, -4, 0],
+      position: [2.5, -2, 0], // было [2.5, -4, 0]
       date: '',
       description: '',
       images: [],
@@ -274,7 +276,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-4',
       name: '',
-      position: [1.2, -5.3, 0],
+      position: [1.2, -3.3, 0], // было [1.2, -5.3, 0]
       date: '',
       description: '',
       images: [],
@@ -282,7 +284,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-5',
       name: '',
-      position: [-1, -7, 0],
+      position: [-1, -5, 0], // было [-1, -7, 0]
       date: '',
       description: '',
       images: [],
@@ -290,7 +292,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-6',
       name: '',
-      position: [-3, -6.5, 0],
+      position: [-3, -4.5, 0], // было [-3, -6.5, 0]
       date: '',
       description: '',
       images: [],
@@ -298,7 +300,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-7',
       name: '',
-      position: [-2.7, -5, 0],
+      position: [-2.7, -3, 0], // было [-2.7, -5, 0]
       date: '',
       description: '',
       images: [],
@@ -306,7 +308,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-8',
       name: '',
-      position: [-1, 3, 0],
+      position: [-1, 5, 0], // было [-1, 3, 0]
       date: '',
       description: '',
       images: [],
@@ -314,7 +316,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-9',
       name: '',
-      position: [-0.8, 4.5, 0],
+      position: [-0.8, 6.5, 0], // было [-0.8, 4.5, 0]
       date: '',
       description: '',
       images: [],
@@ -322,7 +324,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-10',
       name: '',
-      position: [-0.2, 8, 0],
+      position: [-0.2, 10, 0], // было [-0.2, 8, 0]
       date: '',
       description: '',
       images: [],
@@ -330,7 +332,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-11',
       name: '',
-      position: [1, 7.5, 0],
+      position: [1, 9.5, 0], // было [1, 7.5, 0]
       date: '',
       description: '',
       images: [],
@@ -338,7 +340,7 @@ export const constellations: Constellation[] = [
     {
       id: 's11-12',
       name: '',
-      position: [2, 6, 0],
+      position: [2, 8, 0], // было [2, 6, 0]
       date: '',
       description: '',
       images: [],
@@ -575,7 +577,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-1',
       name: '',
-      position: [3.5, 6, 0],
+      position: [3.5, 9, 0], // было [3.5, 8, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -583,7 +585,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-2',
       name: '',
-      position: [0, 4.5, 0],
+      position: [0, 7.5, 0], // было [0, 6.5, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -591,7 +593,7 @@ export const constellations: Constellation[] = [
      {
       id: 's02-3',
       name: '',
-      position: [-3.5, 3, 0],
+      position: [-3.5, 6, 0], // было [-3.5, 5, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -599,7 +601,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-4',
       name: '',
-      position: [-1, 1, 0],
+      position: [-1, 4, 0], // было [-1, 3, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -607,7 +609,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-5',
       name: '',
-      position: [2, 1, 0],
+      position: [2, 4, 0], // было [2, 3, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -615,7 +617,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-6',
       name: '',
-      position: [-4, 1, 0],
+      position: [-4, 4, 0], // было [-4, 3, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -623,7 +625,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-7',
       name: '',
-      position: [-5, 0, 0],
+      position: [-5, 3, 0], // было [-5, 2, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -631,7 +633,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-8',
       name: '',
-      position: [-5.5, -1, 0],
+      position: [-5.5, 2, 0], // было [-5.5, 1, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -639,7 +641,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-9',
       name: '',
-      position: [-3, -6, 0],
+      position: [-3, -3, 0], // было [-3, -4, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -647,7 +649,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-10',
       name: '',
-      position: [-1.5, -5, 0],
+      position: [-1.5, -2, 0], // было [-1.5, -3, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -655,7 +657,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-11',
       name: '',
-      position: [1.5, -5, 0],
+      position: [1.5, -2, 0], // было [1.5, -3, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -663,7 +665,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-12',
       name: '',
-      position: [3, -6, 0],
+      position: [3, -3, 0], // было [3, -4, 0] → +1
       date: '',
       description: '',
       images: [],
@@ -671,7 +673,7 @@ export const constellations: Constellation[] = [
     {
       id: 's02-13',
       name: '',
-      position: [5, -8, 0],
+      position: [5, -5, 0], // было [5, -6, 0] → +1
       date: '',
       description: '',
       images: [],

@@ -1,13 +1,105 @@
 /* StarModal.css */
 
+/* ============================================
+   CSS переменные для цветов и стилей
+   ============================================ */
+
+:root {
+    /* Основные цвета */
+   /* Основные цвета */
+  --color-bg-overlay: rgba(30, 20, 10, 0.88);
+  --color-overlay-blur: blur(12px);
+
+  /* Цвета модалки */
+  --color-modal-bg-start: #1c140f;
+  --color-modal-bg-end: #2c1c14;
+  --color-modal-border: rgba(251, 191, 36, 0.15);
+  --color-modal-shadow: rgba(180, 83, 9, 0.3);
+  --modal-border-radius: 24px;
+  --modal-border-radius-mobile: 20px;
+
+  /* Цвета кнопок */
+  --color-button-bg: rgba(251, 191, 36, 0.2);
+  --color-button-border: rgba(253, 230, 138, 0.25);
+  --color-button-bg-hover: rgba(253, 230, 138, 0.3);
+  --color-button-bg-active: rgba(254, 243, 199, 0.4);
+
+  /* Текст */
+  --color-text-primary: #fef3c7;
+  --color-text-secondary: #fbbf24;
+  --color-text-description: #fde68a;
+  --color-text-gradient-start: #fef3c7;
+  --color-text-gradient-end: #fbbf24;
+
+  /* Элементы */
+  --color-description-bg: rgba(180, 83, 9, 0.15);
+  --color-description-border: rgba(251, 191, 36, 0.2);
+  --color-gallery-bg: #78350f;
+  --color-gallery-border: rgba(245, 158, 11, 0.2);
+
+  /* Навигация галереи */
+  --color-nav-bg: rgba(180, 83, 9, 0.25);
+  --color-nav-bg-hover: rgba(217, 119, 6, 0.35);
+  --color-nav-border: rgba(251, 191, 36, 0.25);
+
+  /* Счетчик изображений */
+  --color-counter-bg: rgba(180, 83, 9, 0.25);
+  --color-counter-border: rgba(251, 191, 36, 0.2);
+
+  /* Аудио плеер */
+  --color-audio-gradient-start: #f59e0b;
+  --color-audio-gradient-end: #d97706;
+  --color-audio-shadow: rgba(245, 158, 11, 0.25);
+  --color-audio-shadow-hover: rgba(245, 158, 11, 0.35);
+
+  /* Полноэкранный режим */
+  --color-fullscreen-overlay: rgba(30, 20, 10, 0.95);
+  --color-fullscreen-hint-bg: rgba(120, 53, 15, 0.6);
+  --color-fullscreen-counter-bg: rgba(120, 53, 15, 0.6);
+
+  /* Миниатюры */
+  --color-thumbs-bg: rgba(180, 83, 9, 0.2);
+  --color-thumbs-border: rgba(251, 191, 36, 0.2);
+  --color-thumb-active: #f59e0b;
+
+  /* Swiper */
+  --color-swiper-nav-bg: rgba(120, 53, 15, 0.4);
+  --color-swiper-nav-border: rgba(251, 191, 36, 0.25);
+  --color-swiper-bullet: #fde68a;
+  --color-swiper-bullet-active: #f59e0b;
+  --color-swiper-pagination-bg: rgba(120, 53, 15, 0.6);
+
+  /* Скроллбар */
+  --color-scrollbar-track: rgba(251, 191, 36, 0.1);
+  --color-scrollbar-thumb: rgba(251, 191, 36, 0.25);
+  --color-scrollbar-thumb-hover: rgba(251, 191, 36, 0.35);
+
+  /* Адаптивные размеры */
+  --modal-height-desktop: 90vh;
+  --modal-height-tablet: 85vh;
+  --modal-height-mobile: 80vh;
+  --modal-padding-desktop: 24px;
+  --modal-padding-tablet: 20px;
+  --modal-padding-mobile: 16px;
+  --button-size-desktop: 48px;
+  --button-size-tablet: 44px;
+  --button-size-mobile: 40px;
+  --nav-size-desktop: 44px;
+  --nav-size-mobile: 40px;
+}
+
+/* ============================================
+   Основные стили с использованием переменных
+   ============================================ */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  background: var(--color-bg-overlay);
+  backdrop-filter: var(--color-overlay-blur);
   z-index: 1000;
   display: flex;
   align-items: flex-end;
@@ -20,23 +112,23 @@
   transform: translateY(-12px);
   bottom: 100%;
   right: 12px;
-  width: 48px;
-  height: 48px;
+  width: var(--button-size-desktop);
+  height: var(--button-size-desktop);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  color: var(--color-text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 1001;
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--color-overlay-blur);
 }
 
 .modal-close-button:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--color-button-bg-hover);
   transform: scale(1.1);
 }
 
@@ -49,12 +141,12 @@
   position: relative;
   width: 100%;
   max-width: 768px;
-  height: 90vh;
-  max-height: 90vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  border-radius: 24px 24px 0 0;
-  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: var(--modal-height-desktop);
+  max-height: var(--modal-height-desktop);
+  background: linear-gradient(135deg, var(--color-modal-bg-start) 0%, var(--color-modal-bg-end) 100%);
+  box-shadow: 0 -20px 60px var(--color-modal-shadow);
+  border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+  border: 1px solid var(--color-modal-border);
 }
 
 /* Внутренний контент */
@@ -62,7 +154,7 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: 24px;
+  padding: var(--modal-padding-desktop);
   display: flex;
   flex-direction: column;
 }
@@ -72,17 +164,17 @@
 }
 
 .modal-content::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-scrollbar-track);
   border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-scrollbar-thumb);
   border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--color-scrollbar-thumb-hover);
 }
 
 /* Хедер */
@@ -90,21 +182,21 @@
   text-align: center;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--color-button-border);
 }
 
 .modal-header h2 {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+  background: linear-gradient(135deg, var(--color-text-gradient-start) 0%, var(--color-text-gradient-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .star-date {
-  color: #94a3b8;
+  color: var(--color-text-secondary);
   font-size: 14px;
   font-weight: 500;
 }
@@ -144,12 +236,12 @@
 .star-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #cbd5e1;
+  color: var(--color-text-description);
   text-align: justify;
   padding: 16px;
-  background: rgba(30, 41, 59, 0.5);
+  background: var(--color-description-bg);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-description-border);
 }
 
 /* Галерея изображений */
@@ -159,8 +251,8 @@
   aspect-ratio: 16/9;
   border-radius: 16px;
   overflow: hidden;
-  background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-gallery-bg);
+  border: 1px solid var(--color-gallery-border);
 }
 
 .gallery-image-container {
@@ -184,11 +276,11 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  width: 44px;
-  height: 44px;
+  background: var(--color-nav-bg);
+  border: 1px solid var(--color-nav-border);
+  color: var(--color-text-primary);
+  width: var(--nav-size-desktop);
+  height: var(--nav-size-desktop);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -196,11 +288,11 @@
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 10;
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--color-overlay-blur);
 }
 
 .gallery-nav:hover {
-  background: rgba(30, 41, 59, 0.9);
+  background: var(--color-nav-bg-hover);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -216,14 +308,14 @@
   position: absolute;
   bottom: 16px;
   right: 16px;
-  background: rgba(15, 23, 42, 0.8);
-  color: white;
+  background: var(--color-counter-bg);
+  color: var(--color-text-primary);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--color-overlay-blur);
+  border: 1px solid var(--color-counter-border);
 }
 
 /* Аудио плеер */
@@ -237,113 +329,38 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--color-audio-gradient-start) 0%, var(--color-audio-gradient-end) 100%);
   border: none;
-  color: white;
+  color: var(--color-text-primary);
   padding: 14px 28px;
   border-radius: 30px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 20px var(--color-audio-shadow);
 }
 
 .audio-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 6px 25px var(--color-audio-shadow-hover);
 }
 
 .audio-button:active {
   transform: translateY(0);
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-  .modal-container {
-    height: 85vh;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .modal-content {
-    padding: 20px;
-  }
-
-  .modal-header h2 {
-    font-size: 24px;
-  }
-
-  .star-description {
-    font-size: 15px;
-    padding: 14px;
-  }
-
-  .modal-close-button {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-container {
-    height: 80vh;
-  }
-
-  .modal-content {
-    padding: 16px;
-  }
-
-  .modal-header h2 {
-    font-size: 22px;
-  }
-
-  .star-description {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-  .audio-button {
-    padding: 12px 24px;
-    font-size: 15px;
-  }
-
-  .gallery-nav {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* Темная тема */
-@media (prefers-color-scheme: dark) {
-  .modal-container {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  }
-
-  .star-description {
-    background: rgba(30, 41, 59, 0.6);
-  }
-
-  .gallery-nav {
-    background: rgba(15, 23, 42, 0.9);
-  }
-
-  .image-counter {
-    background: rgba(15, 23, 42, 0.9);
-  }
-}
-
-
-
-
-/* StarModal.css - добавленные стили для полноэкранного просмотра */
+/* ============================================
+   Стили для полноэкранного просмотра
+   ============================================ */
 
 /* Контейнер для Swiper галереи */
 .image-gallery-swiper {
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
-  background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-gallery-bg);
+  border: 1px solid var(--color-gallery-border);
 }
 
 /* Основной слайдер */
@@ -374,8 +391,8 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+  background: var(--color-fullscreen-hint-bg);
+  color: var(--color-text-primary);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
@@ -391,8 +408,8 @@
 /* Миниатюры */
 .thumbs-swiper {
   padding: 12px;
-  background: rgba(15, 23, 42, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-thumbs-bg);
+  border-top: 1px solid var(--color-thumbs-border);
   height: 80px;
 }
 
@@ -411,7 +428,7 @@
 }
 
 .swiper-slide-thumb-active .thumb-image {
-  border-color: #3390ec;
+  border-color: var(--color-thumb-active);
 }
 
 /* Полноэкранный оверлей */
@@ -421,8 +438,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
+  background: var(--color-fullscreen-overlay);
+  backdrop-filter: var(--color-overlay-blur);
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -438,20 +455,20 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  color: var(--color-text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 2001;
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--color-overlay-blur);
 }
 
 .fullscreen-close-button:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--color-button-bg-hover);
   transform: scale(1.1);
 }
 
@@ -470,7 +487,7 @@
   max-height: 100%;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 60px var(--color-modal-shadow);
 }
 
 /* Навигация в полноэкранном режиме */
@@ -478,9 +495,9 @@
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--color-button-bg);
+  border: 1px solid var(--color-button-border);
+  color: var(--color-text-primary);
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -490,11 +507,11 @@
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 2001;
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--color-overlay-blur);
 }
 
 .fullscreen-nav:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--color-button-bg-hover);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -512,19 +529,109 @@
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+  background: var(--color-fullscreen-counter-bg);
+  color: var(--color-text-primary);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 16px;
   font-weight: 500;
   z-index: 2001;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--color-overlay-blur);
+  border: 1px solid var(--color-counter-border);
 }
 
-/* Адаптивность для полноэкранного режима */
+/* ============================================
+   Настройки для Swiper
+   ============================================ */
+
+.main-swiper .swiper-button-next,
+.main-swiper .swiper-button-prev {
+  color: var(--color-text-primary);
+  background: var(--color-swiper-nav-bg);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  backdrop-filter: var(--color-overlay-blur);
+  border: 1px solid var(--color-swiper-nav-border);
+}
+
+.main-swiper .swiper-button-next:after,
+.main-swiper .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-swiper .swiper-pagination {
+  bottom: 10px !important;
+}
+
+.main-swiper .swiper-pagination-bullet {
+  background: var(--color-swiper-bullet);
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+}
+
+.main-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--color-swiper-bullet-active);
+}
+
+.main-swiper .swiper-pagination-fraction {
+  background: var(--color-swiper-pagination-bg);
+  color: var(--color-text-primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  backdrop-filter: var(--color-overlay-blur);
+  border: 1px solid var(--color-counter-border);
+}
+
+/* ============================================
+   Адаптивность
+   ============================================ */
+
 @media (max-width: 768px) {
+  :root {
+    --modal-border-radius: var(--modal-border-radius-mobile);
+  }
+
+  .modal-container {
+    height: var(--modal-height-tablet);
+    border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+  }
+
+  .modal-content {
+    padding: var(--modal-padding-tablet);
+  }
+
+  .modal-header h2 {
+    font-size: 24px;
+  }
+
+  .star-description {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .modal-close-button {
+    width: var(--button-size-tablet);
+    height: var(--button-size-tablet);
+  }
+
+  .main-swiper {
+    aspect-ratio: 4/3;
+  }
+
+  .thumbs-swiper {
+    display: none; /* На мобилках скрываем миниатюры */
+  }
+
   .fullscreen-close-button {
     width: 44px;
     height: 44px;
@@ -558,6 +665,38 @@
 }
 
 @media (max-width: 480px) {
+  .modal-container {
+    height: var(--modal-height-mobile);
+  }
+
+  .modal-content {
+    padding: var(--modal-padding-mobile);
+  }
+
+  .modal-header h2 {
+    font-size: 22px;
+  }
+
+  .star-description {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .audio-button {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .gallery-nav {
+    width: var(--nav-size-mobile);
+    height: var(--nav-size-mobile);
+  }
+
+  .modal-close-button {
+    width: var(--button-size-mobile);
+    height: var(--button-size-mobile);
+  }
+
   .fullscreen-close-button {
     width: 40px;
     height: 40px;
@@ -571,73 +710,57 @@
   .fullscreen-counter {
     font-size: 13px;
   }
-}
 
-/* Настройки для Swiper */
-.main-swiper .swiper-button-next,
-.main-swiper .swiper-button-prev {
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.main-swiper .swiper-button-next:after,
-.main-swiper .swiper-button-prev:after {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.main-swiper .swiper-pagination {
-  bottom: 10px !important;
-}
-
-.main-swiper .swiper-pagination-bullet {
-  background: white;
-  opacity: 0.5;
-  width: 8px;
-  height: 8px;
-  margin: 0 4px;
-}
-
-.main-swiper .swiper-pagination-bullet-active {
-  opacity: 1;
-  background: #3390ec;
-}
-
-.main-swiper .swiper-pagination-fraction {
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Адаптивность основной галереи */
-@media (max-width: 768px) {
-  .main-swiper {
-    aspect-ratio: 4/3;
-  }
-
-  .thumbs-swiper {
-    display: none; /* На мобилках скрываем миниатюры */
-  }
-}
-
-@media (max-width: 480px) {
   .main-swiper {
     aspect-ratio: 1;
   }
 }
+
+/* ============================================
+   Светлая тема (опционально)
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-modal-bg-start: #ffffff;
+    --color-modal-bg-end: #f8fafc;
+    --color-modal-border: rgba(0, 0, 0, 0.1);
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-text-description: #475569;
+    --color-text-gradient-start: #0f172a;
+    --color-text-gradient-end: #475569;
+    --color-description-bg: rgba(241, 245, 249, 0.7);
+    --color-description-border: rgba(0, 0, 0, 0.05);
+    --color-gallery-bg: #f1f5f9;
+    --color-nav-bg: rgba(255, 255, 255, 0.8);
+    --color-nav-bg-hover: rgba(255, 255, 255, 0.9);
+    --color-nav-border: rgba(0, 0, 0, 0.1);
+    --color-counter-bg: rgba(255, 255, 255, 0.8);
+    --color-counter-border: rgba(0, 0, 0, 0.1);
+    --color-thumbs-bg: rgba(241, 245, 249, 0.7);
+    --color-swiper-nav-bg: rgba(255, 255, 255, 0.8);
+    --color-swiper-nav-border: rgba(0, 0, 0, 0.1);
+    --color-swiper-pagination-bg: rgba(255, 255, 255, 0.8);
+    --color-scrollbar-track: rgba(0, 0, 0, 0.05);
+    --color-scrollbar-thumb: rgba(0, 0, 0, 0.2);
+    --color-scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ============================================
+   Темная тема (базовая)
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Уже заданы темные цвета по умолчанию */
+  }
+}
+
+/* ============================================
+   Дополнительные стили
+   ============================================ */
 
 /* Двойной тап для зума */
 .swiper-zoom-container {

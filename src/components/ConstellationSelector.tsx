@@ -44,10 +44,6 @@ export default function ConstellationSelector({
       </button>
 
       <div className="constellation-info">
-        <div className="constellation-number">
-          {String(currentIndex + 1).padStart(2, '0')}/
-          {String(constellations.length).padStart(2, '0')}
-        </div>
         <h2 className="constellation-name">{selectedConstellation.name}</h2>
       </div>
 

@@ -1,10 +1,10 @@
 .constellation-selector {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.85);
+  background: linear-gradient(135deg, var(--color-modal-bg-start) 0%, var(--color-modal-bg-end) 100%);
   backdrop-filter: blur(15px);
   padding: 1rem 2rem;
   display: flex;
@@ -15,9 +15,9 @@
 }
 
 .nav-button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--color-button-bg);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-button-border);
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -27,16 +27,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
   flex-shrink: 0;
-}
-
-.nav-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: scale(1.1);
-}
-
-.nav-button:active {
-  transform: scale(0.95);
 }
 
 .constellation-info {
@@ -62,7 +52,7 @@
   color: white;
   margin: 0;
   text-align: center;
-  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

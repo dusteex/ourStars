@@ -88,7 +88,7 @@ export default function Star({
         transparent={true}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        color={isClickable ? '#FFDD1F' : '#FFFFFF50'}
+        color={isClickable ? '#fbbf24' : '#FFFFFF50'}
       />
     </sprite>
   );
