@@ -29,6 +29,11 @@
   flex-shrink: 0;
 }
 
+.nav-button:hover {
+  background: var(--color-button-hover);
+  transform: scale(1.05);
+}
+
 .constellation-info {
   display: flex;
   flex-direction: column;
@@ -38,12 +43,41 @@
   padding: 0 2rem;
 }
 
-.constellation-number {
+.month-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.25rem 1rem;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.month-indicator:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.constellation-name-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+}
+
+.constellation-calendar {
+  color:#fbbf24;
 }
 
 .constellation-name {
@@ -56,6 +90,132 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.constellation-name-button:hover .constellation-name {
+  transform: scale(1.05);
+}
+
+/* Модальное окно */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.month-modal {
+  background: linear-gradient(135deg, var(--color-modal-bg-start) 0%, var(--color-modal-bg-end) 100%);
+  border-radius: 20px 20px 0 0;
+  padding: 2rem;
+  width: 100%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+  background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.month-button {
+  background: rgba(120, 53, 15, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-align: left;
+  height: 50px;
+  color: var(--color-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.month-button.current-month {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.1) 100%);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.month-name {
+  font-weight: 500;
+}
+
+.constellation-count {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: black;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.month-hint {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  margin: 0;
+  font-style: italic;
 }
 
 /* Адаптивность */
@@ -72,6 +232,15 @@
     width: 44px;
     height: 44px;
   }
+
+  .month-modal {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .month-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -87,12 +256,22 @@
     font-size: 1.1rem;
   }
 
-  .constellation-number {
+  .month-indicator {
     font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
   }
 
   .nav-button {
     width: 40px;
     height: 40px;
+  }
+
+  .month-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .month-button {
+    padding: 1.25rem 1rem;
+    font-size: 1rem;
   }
 }

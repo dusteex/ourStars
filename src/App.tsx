@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import ConstellationScene from './components/ConstellationScene';
 import StarModal from './components/StarModal';
@@ -12,17 +12,41 @@ import MonthSelector from './components/StarList/MonthSelector';
 import StarList from './components/StarList/StarList';
 import { getStarWorldPosition } from './utils/getStarWorldPosition';
 
+const normalizeStars = (stars: Star[]) => stars
+            .filter(star => !!star.name)
+            .sort((a, b) => {
+              // Преобразуем строки дат в объекты Date для сравнения
+              const dateA = new Date(a.date.split('.').reverse().join('-'));
+              const dateB = new Date(b.date.split('.').reverse().join('-'));
+              return dateA - dateB; // для сортировки по убыванию
+            })
 
 function App() {
+    const normalizedConstellations = useMemo(() => {
+    return constellations.map(constellation => ({
+      ...constellation,
+      stars: constellation.stars.map(star => ({
+        ...star,
+        position: getStarWorldPosition(
+          star.position,
+          constellation.cameraLookAt,
+        ),
+        constellationId: constellation.id,
+      }))
+    }))
+  }, [constellations])
 
-  const [selectedConstellation, setSelectedConstellation] = useState<Constellation>(constellations[0]);
+  console.log(normalizedConstellations)
+
+
+  const [selectedConstellation, setSelectedConstellation] = useState<Constellation>(normalizedConstellations[0]);
   const [previousConstellation, setPreviousConstellation] = useState<Constellation | null>(null);
   const [selectedStar, setSelectedStar] = useState<Star | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isZoomingToStar, setIsZoomingToStar] = useState(false);
   const [targetStar, setTargetStar] = useState<Star | null>(null);
 
-  const handleConstellationChange = (constellation: Constellation) => {
+  const handleConstellationChange = (constellation: Constellation, cb?: () => void) => {
     if (isTransitioning || constellation.id === selectedConstellation.id) return;
     setPreviousConstellation(selectedConstellation);
     setIsTransitioning(true);
@@ -34,7 +58,7 @@ function App() {
     setTimeout(() => {
       setIsTransitioning(false);
       setPreviousConstellation(null);
-      console.log(constellation.stars.map(star => star.name).filter(item => !!item))
+      cb?.()
     }, 1300);
   };
 
@@ -55,16 +79,14 @@ function App() {
   };
 
   const handleStarListItemClick = (star: Star) => {
-    const normalizedStar = {
-      ...star,
-      position: getStarWorldPosition(
-        star.position,
-        selectedConstellation.cameraLookAt,
-      )
+    if(star.constellationId !== selectedConstellation.id) {
+      const targetConstellation = normalizedConstellations.find(({id}) => id === star.constellationId)
+      handleConstellationChange(targetConstellation, () => handleStarClick(star))
+    } else {
+      handleStarClick(star)
     }
-
-    handleStarClick(normalizedStar)
   }
+
 
   return (
     <div className="app">
@@ -74,7 +96,7 @@ function App() {
           gl={{ antialias: true }}
         >
           <ConstellationScene
-            constellations={constellations}
+            constellations={normalizedConstellations}
             selectedConstellation={selectedConstellation}
             previousConstellation={previousConstellation}
             onStarClick={handleStarClick}
@@ -88,7 +110,7 @@ function App() {
         </Canvas>
 
         <ConstellationSelector
-          constellations={constellations}
+          constellations={normalizedConstellations}
           selectedConstellation={selectedConstellation}
           onSelect={handleConstellationChange}
         />
@@ -96,7 +118,8 @@ function App() {
         <StarList
           onStarClick={handleStarListItemClick}
           selectedStarId="null"
-          stars={selectedConstellation.stars.filter(star => !!star.name)}
+          constellationStars={normalizeStars(selectedConstellation.stars)}
+          allStars={normalizeStars(normalizedConstellations.reduce((acc, item) => [...acc, ...item.stars],[] as Star[]))}
         />
 
         <AnimatePresence>

@@ -302,16 +302,8 @@ export default function ConstellationScene({
 
       {/* Все созвездия */}
 
-      {constellations.map((item) => {
-        const constellation = {
-          ...item,
-          stars: item.stars.map(star => ({ ...star,
-            position: getStarWorldPosition(
-              star.position,
-              item.cameraLookAt,
-            )
-          })),
-        };
+      {constellations.map((constellation) => {
+
         const isActive = constellation.id === selectedConstellation.id;
         const opacity = isActive ? 1 : 1;
         const lineOpacity = isActive ? 0.25 : 0.05;

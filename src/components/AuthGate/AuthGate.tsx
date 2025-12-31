@@ -75,7 +75,6 @@ export default function AuthGate({ children }: AuthGateProps) {
     );
   }
 
-
   // Если не авторизован - показываем форму
   return (
     <>

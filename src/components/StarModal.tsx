@@ -274,30 +274,18 @@ export default function StarModal({ star, onClose }: StarModalProps) {
 
                   <div className="messages-section">
                     <div className="sound-messages">
-                      <SoundMessage
-                        audioUrl={audioSrc}
-                        duration={10}
-                      />
-                      <SoundMessage
-                        audioUrl={audioSrc}
-                        duration={10}
-                      />
                     </div>
 
+                  {!!star.videos?.length && (
                     <div className="circle-messages-grid">
-                      <CircleMessage
-                        videoUrl={audioSrc}
-                        duration={10}
-                      />
-                      <CircleMessage
-                        videoUrl={audioSrc}
-                        duration={10}
-                      />
-                      <CircleMessage
-                        videoUrl={audioSrc}
-                        duration={10}
-                      />
+                      {star.videos?.map(item => (
+                         <CircleMessage
+                          videoUrl={item}
+                          duration={100}
+                        />
+                      ))}
                     </div>
+                   )}
                   </div>
                 </div>
               </div>
@@ -395,12 +383,7 @@ export default function StarModal({ star, onClose }: StarModalProps) {
               </motion.button>
 
               {/* Индикатор прогресса */}
-              <motion.div
-                className="fullscreen-counter"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-              >
+              <motion.div className="fullscreen-counter">
                 {activeImageIndex + 1} / {star.images.length}
               </motion.div>
             </>

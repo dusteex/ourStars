@@ -6,6 +6,7 @@ export interface Star {
   description: string;
   images: string[];
   audioUrl?: string;
+  constellationId?: number
 }
 
 export interface Constellation {

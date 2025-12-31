@@ -31,16 +31,22 @@ const allStarImages = import.meta.glob(
   { eager: true, import: 'default' }
 );
 
+const allStarVideos = import.meta.glob(
+  '/src/data/images/**/*.{mp4,mov}',
+  { eager: true, import: 'default' }
+);
+
 const getStarImages = (id: string) => {
   return Object.entries(allStarImages)
     .filter(([path]) => path.includes(`/images/${id}/`))
     .map(([, url]) => url);
 };
 
-function starImages() {
-  return getStarImages(this.id)
-}
-
+const getStarVideos = (id: string) => {
+  return Object.entries(allStarVideos)
+    .filter(([path]) => path.includes(`/images/${id}/`))
+    .map(([, url]) => url);
+};
 
 export const constellations: Constellation[] = [
   {
@@ -52,26 +58,26 @@ export const constellations: Constellation[] = [
     {
       id: 's09-1',
       name: '',
-      position: [-0, 1, 0], // Было: [-16, 1, 0] → Сдвиг: +15 по X
+      position: [-0, 1, 0],
       date: '',
       description: '',
       images: [],
     },
     {
       id: 's09-2',
-      name: 'А ты всегдаа такой чёрный? Или загорел?',
-      position: [0, -1, 0], // Было: [-15, -1, 0] → Сдвиг: +15 по X
-      date: '03.08.2025',
-      description: 'Что, что, а это я точно не ожидал услышать )))',
-      images: [],
+      name: 'Мы в моём Херсонесе',
+      position: [0, -1, 0],
+      date: '19.09.2024',
+      description: '',
+      images: getStarImages("190924"),
     },
     {
       id: 's09-3',
-      name: 'В этот день началась история',
+      name: 'Начало отношений',
       position: [1.8, 1.5, 0], // Было: [-13.2, 1.5, 0] → Сдвиг: +15 по X
-      date: '20.01.2023',
-      description: 'Легендарная хуйня',
-      images: [],
+      date: '30.09.2024',
+      description: '',
+      images: getStarImages("300924"),
     },
     {
       id: 's09-4',
@@ -83,17 +89,18 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's09-5',
-      name: '',
-      position: [-0.3, 4, 0], // Было: [-15.3, 4, 0] → Сдвиг: +15 по X
-      date: '',
+      name: 'Подарок, от которого у меня сорвало крышу',
+      position: [-0.3, 4, 0],
+      date: '05.09.2025',
       description: '',
-      images: [],
+      videos: getStarVideos("050925"),
+      images: getStarImages("050925"),
     },
     {
       id: 's09-6',
-      name: '',
-      position: [-2.8, 1.05, 0], // Было: [-17.8, 1.05, 0] → Сдвиг: +15 по X
-      date: '',
+      name: 'Первая встреча',
+      position: [-2.8, 1.05, 0],
+      date: '10.09.2024',
       description: '',
       images: [],
     },
@@ -115,11 +122,10 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's09-9',
-      name: '',
+      name: 'Неудачная попытка тебя съесть (Граф Монте-Кристо)',
       position: [-3.3, -0.6, 0], // Было: [-18.3, -0.6, 0] → Сдвиг: +15 по X
-      date: '',
+      date: '22.09.2024',
       description: '',
-      images: [],
     },
     {
       id: 's09-10',
@@ -139,11 +145,11 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's09-12',
-      name: '',
-      position: [4, 4.6, 0], // Было: [-11, 4.6, 0] → Сдвиг: +15 по X
-      date: '',
+      name: 'Твоё ДР',
+      position: [4, 4.6, 0],
+      date: '08.09.2025',
       description: '',
-      images: [],
+      images: getStarImages("080925"),
     },
     ],
     connections: [
@@ -169,17 +175,17 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's10-1',
-      name: '',
+      name: 'Большой теннис',
       position: [1.5, 4, 0],
-      date: '',
+      date: '11.10.2025',
       description: '',
       images: [],
     },
     {
       id: 's10-2',
-      name: '',
+      name: 'Ишачок',
       position: [3, -1, 0],
-      date: '',
+      date: '12.10.2025',
       description: '',
       images: [],
     },
@@ -201,17 +207,16 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's10-5',
-      name: '',
+      name: 'Бесы',
       position: [-3, 5.5, 0],
-      date: '',
+      date: '20.10.2024',
       description: '',
-      images: [],
     },
     {
       id: 's10-6',
-      name: '',
+      name: 'Поехали в Ростов',
       position: [-3.7, 1.5, 0],
-      date: '',
+      date: '18.10.2025',
       description: '',
       images: [],
     },
@@ -251,33 +256,33 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's11-1',
-      name: '',
-      position: [-0, 2, 0], // было [0, 0, 0]
-      date: '',
+      name: 'Время жить',
+      position: [-0, 2, 0],
+      date: '02.11.2024',
       description: '',
       images: [],
     },
     {
       id: 's11-2',
-      name: '',
-      position: [1.2, 0, 0], // было [1.2, -2, 0]
-      date: '',
+      name: 'Первый квиз',
+      position: [1.2, 0, 0],
+      date: '14.11.2024',
       description: '',
       images: [],
     },
     {
       id: 's11-3',
       name: '',
-      position: [2.5, -2, 0], // было [2.5, -4, 0]
+      position: [2.5, -2, 0],
       date: '',
       description: '',
       images: [],
     },
     {
       id: 's11-4',
-      name: '',
+      name: 'Как мы глину месили',
       position: [1.2, -3.3, 0], // было [1.2, -5.3, 0]
-      date: '',
+      date: '09.11.2025',
       description: '',
       images: [],
     },
@@ -291,9 +296,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's11-6',
-      name: '',
+      name: 'Преступление и наказание',
       position: [-3, -4.5, 0], // было [-3, -6.5, 0]
-      date: '',
+      date: '16.11.2025',
       description: '',
       images: [],
     },
@@ -315,9 +320,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's11-9',
-      name: '',
+      name: 'Вкуснейший суп',
       position: [-0.8, 6.5, 0], // было [-0.8, 4.5, 0]
-      date: '',
+      date: '18.11.2025',
       description: '',
       images: [],
     },
@@ -368,9 +373,9 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's12-1',
-      name: '',
+      name: 'Квиз. Знакомство с Саней и Даней',
       position: [-1, 2, 0],
-      date: '',
+      date: '01.12.2024',
       description: '',
       images: [],
     },
@@ -384,9 +389,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's12-3',
-      name: '',
+      name: 'Квиз. ДР Жени',
       position: [-4, 2, 0],
-      date: '',
+      date: '10.12.2024',
       description: '',
       images: [],
     },
@@ -432,9 +437,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's12-9',
-      name: '',
+      name: 'Первый совместный снег',
       position: [2.6, 0, 0],
-      date: '',
+      date: '26.12.2025',
       description: '',
       images: [],
     },
@@ -485,9 +490,9 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's01-1',
-      name: '',
+      name: 'Новый год. Подарки',
       position: [0, 2, 0],
-      date: '',
+      date: '01.01.2025',
       description: '',
       images: [],
     },
@@ -501,9 +506,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's01-3',
-      name: '',
+      name: 'Новогодняя прогулка, собака',
       position: [-3.5, 2.4, 0],
-      date: '',
+      date: '03.01.2025',
       description: '',
       images: [],
     },
@@ -517,9 +522,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's01-5',
-      name: '',
+      name: 'Жесткая туса на хате',
       position: [-2.5, -1, 0],
-      date: '',
+      date: '17.01.2025',
       description: '',
       images: [],
     },
@@ -576,9 +581,9 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's02-1',
-      name: '',
+      name: 'День святого Валентина',
       position: [3.5, 9, 0], // было [3.5, 8, 0] → +1
-      date: '',
+      date: '15.02.2025',
       description: '',
       images: [],
     },
@@ -616,9 +621,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's02-6',
-      name: '',
+      name: 'Пророк. А ещё у меня новый худак и кактус )',
       position: [-4, 4, 0], // было [-4, 3, 0] → +1
-      date: '',
+      date: '22.02.2025',
       description: '',
       images: [],
     },
@@ -702,9 +707,9 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's03-1',
-      name: '',
+      name: 'Встретились с Саней и (как её звали?) )',
       position: [-1, 5, -1],
-      date: '',
+      date: '01.03.2025',
       description: '',
       images: [],
     },
@@ -726,9 +731,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's03-4',
-      name: '',
+      name: 'Парк победы',
       position: [-1.5, 3, -1],
-      date: '',
+      date: '08.03.2025',
       description: '',
       images: [],
     },
@@ -742,9 +747,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's03-6',
-      name: '',
+      name: 'Фиолент с пацанами',
       position: [-5, -2, -1],
-      date: '',
+      date: '15.03.2025',
       description: '',
       images: [],
     },
@@ -766,9 +771,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's03-9',
-      name: '',
+      name: 'Концерт Агаты Кристи',
       position: [2.5, -0.9, -1],
-      date: '',
+      date: '20.03.2025',
       description: '',
       images: [],
     },
@@ -872,9 +877,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's04-3',
-      name: '',
+      name: 'Поездка в деревню, знакомство со всеми',
       position: [-2, 1.5, 0],
-      date: '',
+      date: '20.04.2025',
       description: '',
       images: [],
     },
@@ -888,9 +893,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's04-5',
-      name: '',
+      name: 'Квартирник',
       position: [2.5, 0.5, 0],
-      date: '',
+      date: '26.04.2025',
       description: '',
       images: [],
     },
@@ -919,9 +924,9 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's05-1',
-      name: '',
+      name: 'Шашлычный трип',
       position: [-4, 5, 0],
-      date: '',
+      date: '02.05.2025',
       description: '',
       images: [],
     },
@@ -935,9 +940,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's05-3',
-      name: '',
+      name: 'Балаклава',
       position: [0.5, 2, 0],
-      date: '',
+      date: '08.05.2025',
       description: '',
       images: [],
     },
@@ -959,9 +964,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's05-6',
-      name: '',
+      name: 'Крик',
       position: [2, 1, 0],
-      date: '',
+      date: '13.05.2025',
       description: '',
       images: [],
     },
@@ -1026,9 +1031,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's06-2',
-      name: '',
+      name: 'Картинг',
       position: [-3.6, 2.2, 0],
-      date: '',
+      date: '04.06.2025',
       description: '',
       images: [],
     },
@@ -1162,17 +1167,17 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's07-1',
-      name: '',
+      name: 'Хорошо посидели на лавочке',
       position: [-4, 5, 0],
-      date: '',
+      date: '17.07.2025',
       description: '',
       images: [],
     },
     {
       id: 's07-2',
-      name: '',
+      name: 'Вручение диплома',
       position: [-2, 2.5, 0],
-      date: '',
+      date: '18.07.2025',
       description: '',
       images: [],
     },
@@ -1186,9 +1191,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's07-4',
-      name: '',
+      name: 'Встретились в лагере',
       position: [-0.5, -2.5, 0],
-      date: '',
+      date: '20.07.2025',
       description: '',
       images: [],
     },
@@ -1216,9 +1221,9 @@ export const constellations: Constellation[] = [
     stars: [
     {
       id: 's08-1',
-      name: '',
+      name: 'Я у вас в гостях',
       position: [-5, -2.5, 0],
-      date: '',
+      date: '03.08.2025',
       description: '',
       images: [],
     },
@@ -1232,9 +1237,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's08-3',
-      name: '',
+      name: 'Квиз. Серёжа и Даша',
       position: [1, 1, 0],
-      date: '',
+      date: '07.08.2025',
       description: '',
       images: [],
     },
@@ -1248,9 +1253,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's08-5',
-      name: 'Вы спросите, с чего всё началось?',
+      name: 'Точка отсчёта',
       position: [2, 3.5, 0],
-      date: '05.08.2025',
+      date: '05.08.2024',
       description: '',
       images: getStarImages('050825'),
     },
@@ -1264,9 +1269,9 @@ export const constellations: Constellation[] = [
     },
     {
       id: 's08-7',
-      name: '',
+      name: 'Евпатория',
       position: [2.5, 0.2, 0],
-      date: '',
+      date: '09.08.2025',
       description: '',
       images: [],
     },
@@ -1299,4 +1304,19 @@ export const constellations: Constellation[] = [
       { star1Id: 's08-1', star2Id: 's08-9' },
     ],
   },
-];
+].map(constellation => {
+  return {
+    ...constellation,
+    stars: constellation.stars.map(star => {
+    if(!star.date) return star
+    let pathName = star.date.split('.')
+    pathName[2] = pathName[2].slice(2)
+    pathName = pathName.join("")
+    return {
+      ...star,
+      images: getStarImages(pathName),
+      videos: getStarVideos(pathName),
+    }
+  })
+  }
+})
